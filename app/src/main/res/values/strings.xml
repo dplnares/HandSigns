@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HandSignsApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="home_fragment">Home</string>
+    <string name="learn_fragment">Aprende</string>
+    <string name="translate_fragment">Traducir</string>
+    <string name="help_fragment">Apoyanos</string>
+</resources>
