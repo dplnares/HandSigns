@@ -12,14 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hands.handsignsapp.R;
 import com.hands.handsignsapp.model.ItemList;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerHolder> {
 
     private List<ItemList> items;
+    private List<ItemList> itemsOriginal;
 
     public RecyclerAdapter(List<ItemList> items) {
         this.items = items;
+        itemsOriginal = new ArrayList<>();
+        itemsOriginal.addAll(items);
     }
 
     @NonNull
@@ -37,6 +43,30 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         holder.tvTitulo.setText(item.getTitulo());
 
 
+    }
+
+    public void filtrado(String txtBuscar){
+        int longitud =txtBuscar.length();
+        if(longitud==0){
+            items.clear();
+            items.addAll(itemsOriginal);
+        }else{
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                List<ItemList> colleccion = items.stream().
+                        filter(i -> i.getTitulo().
+                                toLowerCase().contains(txtBuscar.toLowerCase()))
+                        .collect(Collectors.toList());
+                items.clear();
+                items.addAll(colleccion);
+            } else{
+                for (ItemList i: itemsOriginal) {
+                    if(i.getTitulo().toLowerCase().contains(txtBuscar.toLowerCase())){
+                        items.add(i);
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     @Override

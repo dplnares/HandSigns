@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.hands.handsignsapp.R;
 import com.hands.handsignsapp.adapter.RecyclerAdapter;
@@ -22,8 +23,9 @@ import java.util.List;
  * Use the {@link LearnFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LearnFragment extends Fragment {
+public class LearnFragment extends Fragment implements SearchView.OnQueryTextListener {
 
+    private SearchView txtBuscar;
     private RecyclerView rvLista;
     private RecyclerAdapter adapter;
     private List<ItemList> items;
@@ -77,6 +79,7 @@ public class LearnFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_learn, container, false);
         // Inflate the layout for this fragment
         rvLista = (RecyclerView) view.findViewById(R.id.rvLista);
+        txtBuscar= (SearchView) view.findViewById(R.id.txtBuscar);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         rvLista.setLayoutManager(manager);
@@ -85,7 +88,9 @@ public class LearnFragment extends Fragment {
         adapter = new RecyclerAdapter(items);
         rvLista.setAdapter(adapter);
 
+        txtBuscar.setOnQueryTextListener(this);
         return view;
+
 
     }
 
@@ -94,30 +99,32 @@ public class LearnFragment extends Fragment {
 
     private List<ItemList> getItems() {
         List<ItemList> itemLists = new ArrayList<>();
-        itemLists.add(new ItemList("Dibuja la Cara", "Ultima pelicula de DB, peleas epicas.", R.drawable.dibujarcara));
-        itemLists.add(new ItemList("Pinta el dibujo", "La ultima transformacion de la saga no canon.", R.drawable.pintardibujo));
-        itemLists.add(new ItemList("Mamá", "Ultima pelicula de DB, peleas epicas.", R.drawable.mama));
-        itemLists.add(new ItemList("Papá", "La ultima transformacion de la saga no canon.", R.drawable.papa));
-        itemLists.add(new ItemList("Abre el libro", "Ultima pelicula de DB, peleas epicas.", R.drawable.abrelibro));
+        itemLists.add(new ItemList("Vocal A ", "", R.drawable.letraa));
+        itemLists.add(new ItemList("Vocal E ", "", R.drawable.letrae));
+        itemLists.add(new ItemList("Vocal I ", "", R.drawable.letrai));
+        itemLists.add(new ItemList("Vocal O ", "", R.drawable.letrao));
+        itemLists.add(new ItemList("Vocal U", "", R.drawable.letrau));
+        itemLists.add(new ItemList("Dibuja la Cara", "", R.drawable.dibujarcara));
+        itemLists.add(new ItemList("Pinta el dibujo", "", R.drawable.pintardibujo));
+        itemLists.add(new ItemList("Mamá", "", R.drawable.mama));
+        itemLists.add(new ItemList("Papá", "", R.drawable.papa));
+        itemLists.add(new ItemList("Abre el libro", "", R.drawable.abrelibro));
+
+
 
 
         return itemLists;
     }
-    /*public void init(){
-        elements= new ArrayList<>();
-        elements.add(new ListElement(R.drawable.abrelibro,"Abrir Libro","azul"));
-        elements.add(new ListElement(R.drawable.dibujarcara,"Dibujar Cara","azul"));
-        elements.add(new ListElement(R.drawable.mama,"Mama","azul"));
-        elements.add(new ListElement(R.drawable.papa,"Papa","azul"));
 
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
 
-        ListAdapter listAdapter=new ListAdapter(elements, this);
-        RecyclerView recyclerView = recyclerView.findViewById(R.id.listRecyclerView );
-        recyclerView.setHasFixedSize(true);
-
-    }*/
-
-
-
+    @Override
+    public boolean onQueryTextChange(String s) {
+        adapter.filtrado(s);
+        return false;
+    }
 
 }
