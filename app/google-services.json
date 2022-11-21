@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "314752732566",
+    "project_id": "handsigns-8683f",
+    "storage_bucket": "handsigns-8683f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314752732566:android:92e373cdc991a4e9fa21b7",
+        "android_client_info": {
+          "package_name": "com.hands.handsignsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314752732566-frv7of181m0gsts9b6cn87pm1bptl402.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-0VD90iv6ytlki3I5Yrf5jm6j13uZC6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314752732566-frv7of181m0gsts9b6cn87pm1bptl402.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

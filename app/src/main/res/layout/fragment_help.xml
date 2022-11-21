@@ -6,14 +6,24 @@
     tools:context=".fragments.HelpFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:text="@string/help_fragment"
         android:textColor="@color/green_normal"
-        android:textSize="40sp"
-        android:text="@string/help_fragment" />
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/btnSubir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:text="Subir Imagen"
+        tools:ignore="MissingConstraints" />
 
 </FrameLayout>
